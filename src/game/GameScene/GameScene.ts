@@ -1,5 +1,6 @@
 import { Container, DisplayObject } from "pixi.js";
 import { Ball } from "../components/Ball";
+import { Field } from "../components/Field";
 import { Platform } from "../components/Platform";
 import { PlatformControl } from "../control/PlatformControl";
 
@@ -7,9 +8,12 @@ export class GameScene extends Container {
   constructor(
     private readonly platform: Platform,
     private readonly ball: Ball,
+    private readonly field: Field,
     private readonly platformControl: PlatformControl
   ) {
     super();
+
+    this.addChild(this.field);
 
     this.addChild(this.platform);
 

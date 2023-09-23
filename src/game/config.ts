@@ -7,7 +7,14 @@ export const config: Config = {
     },
     ball: {
       radius: 90,
-      fillColor: 0xfe23ee,
+      fillColor: 0xffffff,
+    },
+    field: {
+      width: 600,
+      height: 400,
+      fillColor: 0xef23ee,
+      strokeColor: 0x12f132,
+      lineWidth: 4,
     },
   },
 };
@@ -22,6 +29,13 @@ export type Config = Readonly<{
     ball: {
       radius: number;
       fillColor: number;
+    };
+    field: {
+      width: number;
+      height: number;
+      fillColor: number;
+      strokeColor: number;
+      lineWidth: number;
     };
   }>;
 }>;

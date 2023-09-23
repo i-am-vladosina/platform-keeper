@@ -5,8 +5,8 @@ import { Config } from "game/config";
 import { Pane } from "tweakpane";
 import { GameScene } from "../GameScene/GameScene";
 import { Ball } from "../components/Ball";
+import { Field } from "../components/Field";
 import { Platform } from "../components/Platform";
-import { GameObjectControl } from "../control/GameObjectControl";
 import { PlatformControl } from "../control/PlatformControl";
 
 export const DI_TOKENS = {
@@ -17,6 +17,7 @@ export const DI_TOKENS = {
   gameScene: token<GameScene>("gameScene"),
   platform: token<Platform>("platform"),
   ball: token<Ball>("ball"),
+  field: token<Field>("field"),
   platformControl: token<PlatformControl>("platformControl"),
   // тулзы
   eventEmitter: token<EventEmitter>("eventEmitter"),

@@ -4,6 +4,7 @@ import { GameApplication } from "game/GameApplication";
 import { config } from "game/config";
 import { GameScene } from "../GameScene/GameScene";
 import { Ball } from "../components/Ball";
+import { Field } from "../components/Field";
 import { Platform } from "../components/Platform";
 import { PlatformControl } from "../control/PlatformControl";
 import { DI_TOKENS } from "./di.tokens";
@@ -25,7 +26,10 @@ export function createDiRootContainer() {
   injected(Ball, DI_TOKENS.config);
   c.bind(DI_TOKENS.ball).toInstance(Ball).inResolutionScope();
 
-  injected(GameScene, DI_TOKENS.platform, DI_TOKENS.ball, DI_TOKENS.platformControl);
+  injected(Field, DI_TOKENS.config);
+  c.bind(DI_TOKENS.field).toInstance(Field).inResolutionScope();
+
+  injected(GameScene, DI_TOKENS.platform, DI_TOKENS.ball, DI_TOKENS.field, DI_TOKENS.platformControl);
   c.bind(DI_TOKENS.gameScene).toInstance(GameScene).inResolutionScope();
 
   c.bind(DI_TOKENS.eventEmitter).toInstance(EventEmitter).inTransientScope();
