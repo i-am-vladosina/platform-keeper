@@ -5,6 +5,10 @@ export const config: Config = {
       height: 20,
       fillColor: 0xff0000,
     },
+    ball: {
+      radius: 90,
+      fillColor: 0xfe23ee,
+    },
   },
 };
 
@@ -13,6 +17,10 @@ export type Config = Readonly<{
     platform: {
       width: number;
       height: number;
+      fillColor: number;
+    };
+    ball: {
+      radius: number;
       fillColor: number;
     };
   }>;

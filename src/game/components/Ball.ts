@@ -2,7 +2,7 @@ import { Graphics } from "pixi.js";
 import { Config } from "../config";
 import { GameObject } from "./GameObject";
 
-export class Platform extends Graphics implements GameObject {
+export class Ball extends Graphics implements GameObject {
   constructor(private readonly config: Config) {
     super();
 
@@ -10,7 +10,7 @@ export class Platform extends Graphics implements GameObject {
   }
 
   public create(): void {
-    const { width, height, fillColor } = this.config.game.platform;
-    this.beginFill(fillColor).drawRect(0, 0, width, height).endFill();
+    const { radius, fillColor } = this.config.game.ball;
+    this.beginFill(fillColor).drawCircle(0, 0, radius).endFill();
   }
 }

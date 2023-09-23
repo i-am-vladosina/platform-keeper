@@ -2,10 +2,9 @@ import { EventEmitter } from "@pixi/utils";
 import { Container, injected } from "brandi";
 import { GameApplication } from "game/GameApplication";
 import { config } from "game/config";
-import { DisplayObject } from "pixi.js";
 import { GameScene } from "../GameScene/GameScene";
+import { Ball } from "../components/Ball";
 import { Platform } from "../components/Platform";
-import { GameObjectControl, KeysCommands } from "../control/GameObjectControl";
 import { PlatformControl } from "../control/PlatformControl";
 import { DI_TOKENS } from "./di.tokens";
 
@@ -22,7 +21,11 @@ export function createDiRootContainer() {
 
   injected(Platform, DI_TOKENS.config);
   c.bind(DI_TOKENS.platform).toInstance(Platform).inResolutionScope();
-  injected(GameScene, DI_TOKENS.platform, DI_TOKENS.platformControl);
+
+  injected(Ball, DI_TOKENS.config);
+  c.bind(DI_TOKENS.ball).toInstance(Ball).inResolutionScope();
+
+  injected(GameScene, DI_TOKENS.platform, DI_TOKENS.ball, DI_TOKENS.platformControl);
   c.bind(DI_TOKENS.gameScene).toInstance(GameScene).inResolutionScope();
 
   c.bind(DI_TOKENS.eventEmitter).toInstance(EventEmitter).inTransientScope();
