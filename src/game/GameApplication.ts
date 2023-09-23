@@ -1,10 +1,13 @@
 import { Application as PixiApp, Point } from "pixi.js";
+import { GameScene } from "./GameScene/GameScene";
 import { getDPR } from "./utils/getDPR";
 
 export class GameApplication {
   private containerNode!: HTMLElement;
   private app!: PixiApp;
   private stageDimensions!: Point;
+
+  constructor(private readonly gameScene: GameScene) {}
 
   public start(containerNode: HTMLElement) {
     this.containerNode = containerNode;
@@ -27,6 +30,8 @@ export class GameApplication {
       style.width = "100%";
       style.height = "100%";
     }
+
+    this.app.stage.addChild(this.gameScene);
   }
 
   public getAppInstance(): PixiApp {
