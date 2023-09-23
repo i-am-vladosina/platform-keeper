@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "target": "es6",
+    "strict": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "jsx": "react",
+    "outDir": "./ts-build",
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": false,
+    "allowJs": true,
+    "lib": ["es2020", "dom"],
+    "baseUrl": "./",
+    "paths": {
+      "src/*": ["./src/*"],
+      "game/*": ["./src/game/*"],
+      "engine/*": ["./src/match3-engine/*"],
+      "assets/*": ["./src/game/assets/*"]
+    }
+  },
+  "types": ["node"],
+  "exclude": ["node_modules"]
+}
