@@ -11,6 +11,6 @@ export class Platform extends Graphics implements GameObject {
 
   public create(): void {
     const { width, height, fillColor } = this.config.game.platform;
-    this.beginFill(fillColor).drawRect(0, 0, width, height).endFill();
+    this.beginFill(fillColor).drawRect(0, 0, width, width).endFill();
   }
 }

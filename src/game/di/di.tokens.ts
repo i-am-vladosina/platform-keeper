@@ -7,7 +7,7 @@ import { GameScene } from "../GameScene/GameScene";
 import { Ball } from "../components/Ball";
 import { Field } from "../components/Field";
 import { Platform } from "../components/Platform";
-import { PlatformControl } from "../control/PlatformControl";
+import { MovingControl } from "../control/MovingControl";
 
 export const DI_TOKENS = {
   config: token<Config>("config"),
@@ -18,7 +18,7 @@ export const DI_TOKENS = {
   platform: token<Platform>("platform"),
   ball: token<Ball>("ball"),
   field: token<Field>("field"),
-  platformControl: token<PlatformControl>("platformControl"),
+  movingControl: token<MovingControl>("movingControl"),
   // тулзы
   eventEmitter: token<EventEmitter>("eventEmitter"),
   pane: token<Pane>("pane"),

@@ -6,12 +6,12 @@ export const config: Config = {
       fillColor: 0xff0000,
     },
     ball: {
-      radius: 90,
+      radius: 20,
       fillColor: 0xffffff,
     },
     field: {
-      width: 600,
-      height: 400,
+      width: 200,
+      height: 30,
       fillColor: 0xef23ee,
       strokeColor: 0x12f132,
       lineWidth: 4,

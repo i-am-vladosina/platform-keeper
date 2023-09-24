@@ -3,6 +3,8 @@ import { Config } from "../config";
 import { GameObject } from "./GameObject";
 
 export class Ball extends Graphics implements GameObject {
+  public radius: number = this.config.game.ball.radius;
+
   constructor(private readonly config: Config) {
     super();
 

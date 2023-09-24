@@ -1,16 +1,16 @@
 import { DisplayObject } from "pixi.js";
 
-export type KeysCommands<G extends DisplayObject> = Record<string, (e: KeyboardEvent, gameObject: G) => void>;
+export type KeysCommands = Record<string, (e: KeyboardEvent) => void>;
 
-export class GameObjectControl<G extends DisplayObject> {
-  private keysCommands: KeysCommands<G>;
+export class GameObjectControl {
+  private keysCommands: KeysCommands;
 
-  constructor(private readonly gameObject: G) {
+  constructor() {
     this.keysCommands = {};
     this.enable();
   }
 
-  public setKeyCommands(keysCommands: KeysCommands<G>) {
+  public setKeyCommands(keysCommands: KeysCommands) {
     this.keysCommands = keysCommands;
   }
 
@@ -27,10 +27,10 @@ export class GameObjectControl<G extends DisplayObject> {
   }
 
   private handleKeyDownEvent = (e: KeyboardEvent) => {
-    if (this.gameObject.destroyed) return;
+    // if (this.gameObject.destroyed) return;
 
     const keyCode = e.key;
 
-    this.keysCommands[keyCode]?.(e, this.gameObject);
+    this.keysCommands[keyCode]?.(e);
   };
 }
