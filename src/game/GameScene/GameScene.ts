@@ -1,42 +1,38 @@
 import { Container, DisplayObject, Ticker } from "pixi.js";
 import { CollisionDetector } from "../collisions/CollisionsDetector";
+import { ApplyButton } from "../components/ApplyButton";
 import { Ball } from "../components/Ball";
 import { Field } from "../components/Field";
 import { Platform } from "../components/Platform";
+import { Track } from "../components/Track/Track";
 import { MovingControl } from "../control/MovingControl";
 
 export class GameScene extends Container {
+  private applyButton: ApplyButton;
+
   constructor(
-    private readonly platform: Platform,
-    private readonly ball: Ball,
-    private readonly field: Field,
-    private readonly movingControl: MovingControl
+    // private readonly platform: Platform,
+    // private readonly ball: Ball,
+    // private readonly field: Field,
+    // private readonly movingControl: MovingControl
+    private readonly track: Track
   ) {
     super();
 
-    this.addChild(this.field);
-    this.field.x = 200;
-    this.field.y = 100;
+    this.addChild(this.track);
+    this.track.x = 50;
+    this.track.y = 100;
 
-    this.addChild(this.platform);
+    this.applyButton = new ApplyButton(this.track);
+    this.applyButton.x = this.track.x + this.track.backgroundWidth / 2 - this.applyButton.width / 2;
+    this.applyButton.y = this.track.y + this.track.height + 20;
 
-    this.platform.x = 600;
-    this.platform.y = 400;
-
-    this.addChild(this.ball);
-    this.ball.x = 500;
-    this.ball.y = 360;
-
-    this.movingControl.setMovingObject(this.ball);
+    this.addChild(this.applyButton);
 
     Ticker.shared.add(this.update);
   }
 
   private update = () => {
-    const { width, height } = this.field.children[2];
-    const { x, y } = this.field.children[2].getGlobalPosition();
-    // console.log(width, height);
-    // console.log(x, y);
-    console.log(CollisionDetector.isRectIntersectsCircle(this.platform, this.ball));
+    this.track.update();
   };
 }

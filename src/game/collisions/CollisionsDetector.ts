@@ -1,32 +1,20 @@
+import { Circle, Rectangle } from "../types";
 import { NumberUtils } from "../utils/NumberUtils";
 
-export interface CollisionRectangle {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-}
-
-export interface CollisionCircle {
-  x: number;
-  y: number;
-  radius: number;
-}
-
 export class CollisionDetector {
-  public static isRectIntersectsRect(rectA: CollisionRectangle, rectB: CollisionRectangle): boolean {
+  public static isRectIntersectsRect(rectA: Rectangle, rectB: Rectangle): boolean {
     const xOverlap =
-      NumberUtils.valueInRange(rectA.x, rectB.x, rectB.x + rectB.width) ||
-      NumberUtils.valueInRange(rectB.x, rectA.x, rectA.x + rectA.width);
+      NumberUtils.inRange(rectA.x, rectB.x, rectB.x + rectB.width) ||
+      NumberUtils.inRange(rectB.x, rectA.x, rectA.x + rectA.width);
 
     const yOverlap =
-      NumberUtils.valueInRange(rectA.y, rectB.y, rectB.y + rectB.height) ||
-      NumberUtils.valueInRange(rectB.y, rectA.y, rectA.y + rectA.height);
+      NumberUtils.inRange(rectA.y, rectB.y, rectB.y + rectB.height) ||
+      NumberUtils.inRange(rectB.y, rectA.y, rectA.y + rectA.height);
 
     return xOverlap && yOverlap;
   }
 
-  public static isCircleIntersectsCircle(circleA: CollisionCircle, circleB: CollisionCircle): boolean {
+  public static isCircleIntersectsCircle(circleA: Circle, circleB: Circle): boolean {
     return (
       CollisionDetector.squaredDistance(circleA.x, circleB.x, circleA.y, circleB.y) <
       Math.pow(circleA.radius + circleB.radius, 2)
@@ -34,7 +22,7 @@ export class CollisionDetector {
   }
 
   // https://stackoverflow.com/questions/401847/circle-rectangle-collision-detection-intersection
-  public static isRectIntersectsCircle(rect: CollisionRectangle, circle: CollisionCircle): boolean {
+  public static isRectIntersectsCircle(rect: Rectangle, circle: Circle): boolean {
     const circleDistanceX = Math.abs(circle.x - (rect.x + rect.width / 2));
     const circleDistanceY = Math.abs(circle.y - (rect.y + rect.height / 2));
 
